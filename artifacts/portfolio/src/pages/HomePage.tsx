@@ -246,7 +246,7 @@ export default function HomePage() {
           background: 'rgba(6,6,15,0.6)',
           backdropFilter: 'blur(20px)',
         }}
-        className="bg-[color:var(--border-hl)] text-[19px] font-medium">
+        className="text-[19px] font-medium bg-[#00d0ff42]">
         <div className="container-base">
           <div
             style={{

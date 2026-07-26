@@ -29,7 +29,7 @@ export default function Footer() {
         padding: '48px 0 32px',
         marginTop: 'auto',
       }}
-    >
+      className="bg-[#616de869]">
       <div className="container-base">
         {/* Top row */}
         <div
@@ -41,7 +41,7 @@ export default function Footer() {
           }}
         >
           {/* Brand */}
-          <div>
+          <div className="border-t-[0px] border-r-[0px] border-b-[0px] border-l-[0px]">
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
               <div
                 style={{
@@ -53,7 +53,9 @@ export default function Footer() {
               >
                 YB
               </div>
-              <span style={{ fontWeight: 700, fontSize: 16, color: 'var(--text)' }}>Yash Bhati</span>
+              <span
+                style={{ fontWeight: 700, fontSize: 16, color: 'var(--text)' }}
+                className="text-[24px]">Yash Bhati</span>
             </div>
             <p style={{ fontSize: 13, color: 'var(--text-3)', lineHeight: 1.7, maxWidth: 220 }}>
               Class 10 student & passionate developer from Narnaul, Haryana.
