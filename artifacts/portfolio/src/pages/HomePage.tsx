@@ -1,134 +1,290 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown, Zap, Trophy } from 'lucide-react';
 import profileImg from '@assets/profile_1784802713138.jpg';
-import ParticleCanvas from '../components/ParticleCanvas';
 
-function TypingAnimation() {
-  const strings = ["Python Developer", "Web Developer", "Logic Builder", "Problem Solver", "Physics Enthusiast", "Tech Explorer"];
-  const [text, setText] = useState("");
+const TITLES = [
+  'Python Developer',
+  'Problem Solver',
+  'Physics Enthusiast',
+  'Web Developer',
+  'Logic Builder',
+  'Tech Explorer',
+];
+
+function TypingText() {
+  const [text, setText] = useState('');
   const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const currentString = strings[index];
-    const typingSpeed = isDeleting ? 40 : 80;
-    const pauseDelay = isDeleting ? 500 : 2000;
+    const current = TITLES[index];
+    const speed = deleting ? 38 : 75;
 
-    if (!isDeleting && text === currentString) {
-      const timeout = setTimeout(() => setIsDeleting(true), pauseDelay);
-      return () => clearTimeout(timeout);
+    if (!deleting && text === current) {
+      const t = setTimeout(() => setDeleting(true), 2200);
+      return () => clearTimeout(t);
     }
-
-    if (isDeleting && text === "") {
-      setIsDeleting(false);
-      setIndex((index + 1) % strings.length);
+    if (deleting && text === '') {
+      setDeleting(false);
+      setIndex((i) => (i + 1) % TITLES.length);
       return;
     }
 
-    const timeout = setTimeout(() => {
-      setText(currentString.substring(0, text.length + (isDeleting ? -1 : 1)));
-    }, typingSpeed);
-
-    return () => clearTimeout(timeout);
-  }, [text, isDeleting, index]);
+    const t = setTimeout(() => {
+      setText(current.substring(0, text.length + (deleting ? -1 : 1)));
+    }, speed);
+    return () => clearTimeout(t);
+  }, [text, deleting, index]);
 
   return (
-    <div className="text-2xl md:text-3xl font-semibold mb-6 flex items-center justify-center">
-      <span className="text-[var(--text)]">I'm a&nbsp;</span>
-      <span className="text-[var(--cyan)]">{text}</span>
-      <span className="ml-1 w-[2px] h-[30px] bg-[var(--cyan)] animate-[cursor-blink_1s_step-end_infinite]"></span>
-    </div>
+    <span style={{ color: 'var(--cyan)' }}>
+      {text}
+      <span
+        style={{
+          display: 'inline-block',
+          width: 3,
+          height: '0.85em',
+          background: 'var(--cyan)',
+          marginLeft: 2,
+          verticalAlign: 'middle',
+          borderRadius: 2,
+          animation: 'cursor-blink 1s step-end infinite',
+        }}
+      />
+    </span>
   );
 }
 
+const fadeUp = {
+  hidden: { opacity: 0, x: -28, y: 32 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: { delay: i * 0.14, duration: 0.6, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  }),
+};
+
 export default function HomePage() {
   return (
-    <div className="relative min-h-screen">
-      <ParticleCanvas />
-      
-      <section className="min-h-screen flex flex-col items-center justify-center relative z-10 pt-20 px-6">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(ellipse_at_center,var(--cyan-dim)_0%,transparent_70%)] pointer-events-none rounded-full blur-3xl"></div>
-        
-        <motion.div 
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      {/* Hero */}
+      <section
+        style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '80px 24px 60px',
+          textAlign: 'center',
+          minHeight: 'calc(100vh - 64px)',
+          position: 'relative',
+        }}
+      >
+        {/* Radial glow behind content */}
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            top: '30%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: 700,
+            height: 700,
+            background: 'radial-gradient(ellipse at center, rgba(0,229,255,0.07) 0%, transparent 65%)',
+            pointerEvents: 'none',
+          }}
+        />
+
+        <motion.div
           initial="hidden"
           animate="visible"
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
-          }}
-          className="flex flex-col items-center text-center"
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: 760, position: 'relative' }}
         >
-          <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }} className="relative w-[200px] h-[200px] rounded-full group mb-8">
-            <div className="absolute inset-[-4px] rounded-full overflow-hidden">
-               <div className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0_340deg,var(--cyan)_360deg)] animate-[spin-ring_3s_linear_infinite]"></div>
+          {/* Profile image with spinning gradient ring */}
+          <motion.div variants={fadeUp} custom={0} style={{ position: 'relative', width: 180, height: 180, marginBottom: 36 }}>
+            {/* Rotating gradient ring */}
+            <div
+              style={{
+                position: 'absolute', inset: -4, borderRadius: '50%', overflow: 'hidden',
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute', inset: '-60%',
+                  background: 'conic-gradient(from 0deg, transparent 0deg, #00e5ff 60deg, #8b5cf6 180deg, transparent 220deg)',
+                  animation: 'spin-ring 3s linear infinite',
+                }}
+              />
             </div>
-            <div className="absolute inset-[2px] bg-[var(--bg)] rounded-full z-0"></div>
-            <img 
-              src={profileImg} 
-              alt="Yash Bhati" 
-              className="absolute inset-[4px] w-[192px] h-[192px] rounded-full object-cover group-hover:scale-[1.03] group-hover:brightness-110 transition-all duration-500 z-10" 
+            {/* White separator ring */}
+            <div style={{ position: 'absolute', inset: 2, borderRadius: '50%', background: 'var(--bg)' }} />
+            {/* Photo */}
+            <img
+              src={profileImg}
+              alt="Yash Bhati"
+              style={{
+                position: 'absolute', inset: 6,
+                width: 'calc(100% - 12px)', height: 'calc(100% - 12px)',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                objectPosition: 'center top',
+              }}
             />
           </motion.div>
-          
-          <motion.h1 
-            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-            className="text-5xl md:text-[80px] font-[900] tracking-tight leading-tight mb-4"
+
+          {/* Name */}
+          <motion.h1
+            variants={fadeUp}
+            custom={1}
+            style={{
+              fontSize: 'clamp(48px, 9vw, 88px)',
+              fontWeight: 900,
+              lineHeight: 1.0,
+              letterSpacing: '-0.04em',
+              marginBottom: 20,
+            }}
           >
-            <span 
-              className="gradient-text" 
-              style={{ filter: 'drop-shadow(0 0 20px var(--cyan-glow)) drop-shadow(0 0 40px rgba(0,242,254,0.15))' }}
-            >
-              Yash Bhati
-            </span>
+            <span className="gradient-text">Yash Bhati</span>
           </motion.h1>
-          
-          <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}>
-            <TypingAnimation />
-          </motion.div>
-          
-          <motion.p 
-            variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
-            className="text-[var(--text-2)] text-sm md:text-base font-medium tracking-wide mb-10"
+
+          {/* Typing line */}
+          <motion.p
+            variants={fadeUp}
+            custom={2}
+            style={{
+              fontSize: 'clamp(18px, 3vw, 26px)',
+              fontWeight: 500,
+              color: 'var(--text-2)',
+              marginBottom: 10,
+              minHeight: '1.5em',
+            }}
+          >
+            I'm a&nbsp;<TypingText />
+          </motion.p>
+
+          {/* Subtitle */}
+          <motion.p
+            variants={fadeUp}
+            custom={3}
+            style={{ fontSize: 14, color: 'var(--text-3)', fontWeight: 500, letterSpacing: '0.04em', marginBottom: 36 }}
           >
             Class 10 · PM SHRI KV Phulera · Narnaul, Haryana
           </motion.p>
-          
-          <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }} className="flex flex-wrap justify-center gap-4 mb-10">
-            <div className="px-5 py-2.5 rounded-full glass-card text-sm font-semibold flex items-center gap-2">
-              <span>⚡</span> 16 Projects Built
-            </div>
-            <div className="px-5 py-2.5 rounded-full glass-card text-sm font-semibold flex items-center gap-2">
-              <span>🎯</span> IIT Delhi Hackathon Participant
-            </div>
+
+          {/* Stat pills */}
+          <motion.div
+            variants={fadeUp}
+            custom={4}
+            style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 10, marginBottom: 40 }}
+          >
+            {[
+              { icon: <Zap size={14} />, text: '24 Projects Built' },
+              { icon: <Trophy size={14} />, text: 'IIT Delhi Hackathon Participant' },
+            ].map((item) => (
+              <div
+                key={item.text}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 7,
+                  padding: '8px 18px',
+                  borderRadius: 'var(--radius-full)',
+                  background: 'var(--surface)',
+                  border: '1px solid var(--border)',
+                  fontSize: 13, fontWeight: 600,
+                  color: 'var(--text-2)',
+                  backdropFilter: 'blur(12px)',
+                }}
+              >
+                <span style={{ color: 'var(--cyan)' }}>{item.icon}</span>
+                {item.text}
+              </div>
+            ))}
           </motion.div>
-          
-          <motion.div variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }} className="flex flex-wrap justify-center gap-6">
-            <Link 
-              href="/projects" 
-              className="px-8 py-3.5 rounded-lg text-white font-semibold hover:scale-105 transition-all shadow-[0_0_20px_var(--cyan-glow)] bg-[var(--gradient)] border-none hover:shadow-[0_0_30px_var(--cyan-glow)]"
-            >
+
+          {/* CTA Buttons */}
+          <motion.div
+            variants={fadeUp}
+            custom={5}
+            style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 14 }}
+          >
+            <Link href="/projects" className="btn-glow" style={{ textDecoration: 'none' }}>
               Explore Projects
+              <ArrowRight size={16} />
             </Link>
-            <Link 
-              href="/contact" 
-              className="px-8 py-3.5 rounded-lg border border-[var(--cyan)] text-[var(--cyan)] font-semibold hover:scale-105 transition-all hover:bg-[var(--cyan-dim)]"
-            >
+            <Link href="/contact" className="btn-outline" style={{ textDecoration: 'none' }}>
               Get in Touch
             </Link>
           </motion.div>
         </motion.div>
 
-        <motion.div 
+        {/* Scroll indicator */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-[var(--text-3)] animate-bounce"
+          transition={{ delay: 1.8, duration: 1 }}
+          style={{
+            position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)',
+            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
+            color: 'var(--text-3)', animation: 'bounce-gentle 2s ease-in-out infinite',
+          }}
         >
-          <ChevronDown size={24} />
+          <span style={{ fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 600 }}>Scroll</span>
+          <ChevronDown size={18} />
         </motion.div>
       </section>
+
+      {/* Quick stats strip */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+        style={{
+          borderTop: '1px solid var(--border)',
+          borderBottom: '1px solid var(--border)',
+          background: 'rgba(6,6,15,0.6)',
+          backdropFilter: 'blur(20px)',
+        }}
+      >
+        <div className="container-base">
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
+              gap: 0,
+              padding: '24px 0',
+            }}
+          >
+            {[
+              { value: '24+', label: 'Projects Built' },
+              { value: '5+', label: 'Languages' },
+              { value: '2+', label: 'Years Coding' },
+              { value: '1', label: 'National Hackathon' },
+            ].map((stat, i) => (
+              <div
+                key={stat.label}
+                style={{
+                  textAlign: 'center',
+                  padding: '12px 16px',
+                  borderRight: i < 3 ? '1px solid var(--border)' : 'none',
+                }}
+              >
+                <div
+                  className="gradient-text"
+                  style={{ fontSize: 28, fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1 }}
+                >
+                  {stat.value}
+                </div>
+                <div style={{ fontSize: 12, color: 'var(--text-3)', marginTop: 4, fontWeight: 500 }}>
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 }

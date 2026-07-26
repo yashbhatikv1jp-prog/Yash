@@ -1,170 +1,193 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  SiPython, SiHtml5, SiCss, SiJavascript,
-  SiCplusplus, SiTypescript, SiMysql,
-  SiReact, SiTailwindcss, SiNodedotjs,
-  SiGithub, SiVscodium, SiAndroidstudio, SiGit, SiFigma
+import {
+  SiPython, SiHtml5, SiCss, SiJavascript, SiReact,
+  SiTailwindcss, SiGit, SiGithub, SiVscodium, SiFigma,
+  SiNodedotjs, SiTypescript,
 } from 'react-icons/si';
-import { FaJava } from 'react-icons/fa';
-import { BookOpen, Compass, Code, Terminal, Layers } from 'lucide-react';
+import { Code2, Layers, Wrench, BookOpen, TrendingUp } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
 
-const skillCategories = [
-  {
-    title: "Core Languages",
-    skills: [
-      { name: "Python", Icon: SiPython, color: "#3776AB", level: "Advanced" },
-      { name: "HTML5", Icon: SiHtml5, color: "#E34F26", level: "Advanced" },
-      { name: "CSS3", Icon: SiCss, color: "#1572B6", level: "Advanced" },
-      { name: "JavaScript", Icon: SiJavascript, color: "#F7DF1E", level: "Advanced" }
-    ]
-  },
-  {
-    title: "Expanding",
-    skills: [
-      { name: "C++", Icon: SiCplusplus, color: "#00599C", level: "Intermediate" },
-      { name: "Java", Icon: FaJava, color: "#ED8B00", level: "Learning" },
-      { name: "TypeScript", Icon: SiTypescript, color: "#3178C6", level: "Learning" },
-      { name: "SQL", Icon: SiMysql, color: "#4479A1", level: "Familiar" }
-    ]
-  },
-  {
-    title: "Frameworks & Libraries",
-    skills: [
-      { name: "React", Icon: SiReact, color: "#61DAFB", level: "Intermediate" },
-      { name: "Tailwind CSS", Icon: SiTailwindcss, color: "#38BDF8", level: "Intermediate" },
-      { name: "Node.js", Icon: SiNodedotjs, color: "#339933", level: "Familiar" }
-    ]
-  },
-  {
-    title: "Tools & Platforms",
-    skills: [
-      { name: "GitHub", Icon: SiGithub, color: "var(--text)", level: "Advanced" },
-      { name: "VS Code", Icon: SiVscodium, color: "#007ACC", level: "Advanced" },
-      { name: "Android Studio", Icon: SiAndroidstudio, color: "#3DDC84", level: "Learning" },
-      { name: "Git", Icon: SiGit, color: "#F05032", level: "Intermediate" },
-      { name: "Figma", Icon: SiFigma, color: "#F24E1E", level: "Familiar" }
-    ]
-  }
+interface Skill { name: string; icon: React.ReactNode; level: 'Expert' | 'Advanced' | 'Intermediate' | 'Learning'; color: string; }
+
+const LANGUAGES: Skill[] = [
+  { name: 'Python',     icon: <SiPython />,     level: 'Expert',       color: '#3b82f6' },
+  { name: 'JavaScript', icon: <SiJavascript />, level: 'Advanced',     color: '#facc15' },
+  { name: 'HTML5',      icon: <SiHtml5 />,      level: 'Advanced',     color: '#f97316' },
+  { name: 'CSS3',       icon: <SiCss />,        level: 'Advanced',     color: '#8b5cf6' },
+  { name: 'TypeScript', icon: <SiTypescript />, level: 'Intermediate', color: '#60a5fa' },
+  { name: 'C++',        icon: <Code2 size={22} />, level: 'Intermediate', color: '#2dd4bf' },
+  { name: 'Java',       icon: <Code2 size={22} />, level: 'Learning',     color: '#f43f5e' },
+  { name: 'SQL',        icon: <Code2 size={22} />, level: 'Learning',     color: '#a78bfa' },
 ];
 
-const continuousLearning = [
-  { icon: Code, title: "C++ (Data Structures)", status: "In Progress", desc: "Mastering arrays, linked lists, trees and algorithmic thinking in C++", color: "text-blue-500" },
-  { icon: Terminal, title: "Advanced JavaScript", status: "In Progress", desc: "Async/await, closures, promises, and modern ES6+ patterns", color: "text-yellow-500" },
-  { icon: Layers, title: "React & State Management", status: "In Progress", desc: "Building dynamic UIs with React hooks and component architecture", color: "text-cyan-500" },
-  { icon: BookOpen, title: "TypeScript", status: "In Progress", desc: "Adding type safety to JavaScript for more robust code", color: "text-blue-400" },
-  { icon: Compass, title: "Computer Science Theory", status: "In Progress", desc: "Complexity analysis, recursion, graphs — the math behind code", color: "text-purple-500" },
-  { icon: Code, title: "Android Development", status: "Exploring", desc: "Building mobile apps with Android Studio and Java/Kotlin", color: "text-green-500" },
-  { icon: Layers, title: "Database & SQL", status: "Next Up", desc: "Learning relational databases and query optimization", color: "text-orange-500" },
-  { icon: Terminal, title: "Competitive Programming", status: "Next Up", desc: "LeetCode-style problems to sharpen algorithmic skills", color: "text-red-500" },
-  { icon: BookOpen, title: "Machine Learning Basics", status: "Exploring", desc: "Introduction to Python ML libraries — NumPy, Pandas", color: "text-indigo-500" },
-  { icon: Compass, title: "Open Source Contribution", status: "Next Up", desc: "Planning to make first contributions to public repositories", color: "text-pink-500" }
+const FRAMEWORKS: Skill[] = [
+  { name: 'React',      icon: <SiReact />,        level: 'Advanced',     color: '#22d3ee' },
+  { name: 'Tailwind',   icon: <SiTailwindcss />,  level: 'Advanced',     color: '#38bdf8' },
+  { name: 'Node.js',    icon: <SiNodedotjs />,    level: 'Intermediate', color: '#4ade80' },
 ];
+
+const TOOLS: Skill[] = [
+  { name: 'Git',            icon: <SiGit />,      level: 'Advanced',     color: '#f97316' },
+  { name: 'GitHub',         icon: <SiGithub />,   level: 'Advanced',     color: '#a1a1aa' },
+  { name: 'VS Code',        icon: <SiVscodium />, level: 'Expert',       color: '#60a5fa' },
+  { name: 'Figma',          icon: <SiFigma />,    level: 'Intermediate', color: '#f472b6' },
+];
+
+const LEARNING = [
+  { topic: 'React Native',       icon: 'RN', status: 'In Progress' },
+  { topic: 'Machine Learning',   icon: 'ML', status: 'In Progress' },
+  { topic: 'Data Structures',    icon: 'DS', status: 'Active' },
+  { topic: 'Algorithms & DSA',   icon: 'AL', status: 'Active' },
+  { topic: 'OpenCV (Python)',    icon: 'CV', status: 'Exploring' },
+  { topic: 'FastAPI',            icon: 'FA', status: 'Exploring' },
+  { topic: 'Three.js / WebGL',   icon: '3D', status: 'Exploring' },
+  { topic: 'Docker & DevOps',    icon: 'DO', status: 'On Deck' },
+  { topic: 'PostgreSQL',         icon: 'PG', status: 'On Deck' },
+  { topic: 'System Design',      icon: 'SD', status: 'On Deck' },
+];
+
+const LEVEL_COLORS: Record<string, string> = {
+  Expert:       'rgba(0, 229, 255, 0.15)',
+  Advanced:     'rgba(139, 92, 246, 0.15)',
+  Intermediate: 'rgba(250, 204, 21, 0.12)',
+  Learning:     'rgba(148, 163, 184, 0.10)',
+};
+const LEVEL_TEXT: Record<string, string> = {
+  Expert:       'var(--cyan)',
+  Advanced:     '#a78bfa',
+  Intermediate: '#facc15',
+  Learning:     'var(--text-3)',
+};
+
+function SkillGroup({ title, icon, skills }: { title: string; icon: React.ReactNode; skills: Skill[] }) {
+  return (
+    <div>
+      <div
+        style={{
+          display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20,
+          fontSize: 13, fontWeight: 700, color: 'var(--text-2)',
+          textTransform: 'uppercase', letterSpacing: '0.1em',
+        }}
+      >
+        <span style={{ color: 'var(--cyan)' }}>{icon}</span>
+        {title}
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+        {skills.map((skill, i) => (
+          <motion.div
+            key={skill.name}
+            className="skill-tag"
+            initial={{ opacity: 0, y: 16, scale: 0.95 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.06, duration: 0.4 }}
+            whileHover={{ y: -4, scale: 1.04 }}
+          >
+            <span style={{ fontSize: 20, color: skill.color, lineHeight: 1 }}>{skill.icon}</span>
+            <span style={{ fontWeight: 600, fontSize: 14, color: 'var(--text)' }}>{skill.name}</span>
+            <span
+              style={{
+                fontSize: 9, fontWeight: 800, letterSpacing: '0.08em',
+                padding: '2px 7px', borderRadius: 4,
+                background: LEVEL_COLORS[skill.level],
+                color: LEVEL_TEXT[skill.level],
+                textTransform: 'uppercase',
+              }}
+            >
+              {skill.level}
+            </span>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function SkillsPage() {
   return (
-    <motion.div 
-      initial={{ opacity: 0 }} 
-      animate={{ opacity: 1 }} 
-      exit={{ opacity: 0 }} 
-      transition={{ duration: 0.3 }}
-      className="page-wrapper container mx-auto px-6"
-    >
-      <div className="py-12 md:py-20">
-        <SectionHeader number="01" title="Skills" subtitle="Technical Arsenal" />
-        
-        {/* Languages & Tools Grid */}
-        <div className="space-y-16 mb-24">
-          {skillCategories.map((category, catIdx) => (
-            <div key={category.title}>
-              <h3 className="text-xl font-bold text-[var(--text)] border-b border-[var(--border)] pb-3 mb-8">
-                {category.title}
-              </h3>
-              <motion.div 
-                variants={{ show: { transition: { staggerChildren: 0.1 } } }} 
-                initial="hidden" 
-                whileInView="show" 
-                viewport={{ once: true, margin: "-50px" }}
-                className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
+      <section className="page-section">
+        <div className="container-base">
+          <SectionHeader
+            eyebrow="Technical Skills"
+            title="My Tech Stack"
+            subtitle="Languages, frameworks, and tools I use to bring ideas to life."
+          />
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 52 }}>
+            <SkillGroup title="Languages" icon={<Code2 size={16} />} skills={LANGUAGES} />
+            <SkillGroup title="Frameworks & Libraries" icon={<Layers size={16} />} skills={FRAMEWORKS} />
+            <SkillGroup title="Tools & Platforms" icon={<Wrench size={16} />} skills={TOOLS} />
+          </div>
+        </div>
+      </section>
+
+      {/* Stats row */}
+      <section style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '40px 0' }}>
+        <div className="container-base">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: 0 }}>
+            {[
+              { value: '8+', label: 'Languages Known' },
+              { value: '3+', label: 'Frameworks' },
+              { value: '4+', label: 'Dev Tools' },
+              { value: '2yr', label: 'Coding Experience' },
+            ].map((s, i, arr) => (
+              <div
+                key={s.label}
+                style={{
+                  textAlign: 'center', padding: '16px 12px',
+                  borderRight: i < arr.length - 1 ? '1px solid var(--border)' : 'none',
+                }}
               >
-                {category.skills.map((skill, i) => (
-                  <motion.div 
-                    key={skill.name}
-                    variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
-                    whileHover={{ y: -5, borderColor: skill.color }}
-                    className="glass-card p-6 flex flex-col items-center justify-center relative overflow-hidden group cursor-default"
-                  >
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300" style={{ backgroundColor: skill.color }}></div>
-                    <skill.Icon size={40} color={skill.color} className="mb-4 transition-transform duration-300 group-hover:scale-110 drop-shadow-md" />
-                    <div className="text-[var(--text)] font-semibold mb-1 text-center">{skill.name}</div>
-                    <div className="text-[10px] uppercase tracking-wider text-[var(--text-3)] font-bold">{skill.level}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </div>
-          ))}
-        </div>
-
-        {/* Continuous Learning Section */}
-        <SectionHeader number="02" title="Continuous Learning" subtitle="Always Growing" />
-        <p className="text-[var(--text-2)] mb-10 max-w-3xl text-lg">
-          I believe in lifelong learning. Technology evolves fast, and staying curious is the only way to keep up. Here's what I'm actively studying right now:
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
-          {continuousLearning.map((item, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: (i % 4) * 0.1 }}
-              viewport={{ once: true }}
-              className="glass-card p-6 flex gap-5 items-start hover:border-[var(--border-accent)] transition-colors"
-            >
-              <div className={`p-3 rounded-lg bg-[var(--bg-elevated)] border border-[var(--border)] ${item.color}`}>
-                <item.icon size={24} />
-              </div>
-              <div className="flex-1">
-                <div className="flex justify-between items-start mb-2">
-                  <h4 className="font-bold text-[var(--text)] text-lg">{item.title}</h4>
-                  <span className={`text-[10px] uppercase tracking-wider font-bold px-2 py-1 rounded-full ${
-                    item.status === 'In Progress' ? 'bg-[rgba(0,242,254,0.1)] text-[var(--cyan)]' : 
-                    item.status === 'Next Up' ? 'bg-[rgba(247,223,30,0.1)] text-[#F7DF1E]' : 
-                    'bg-[rgba(168,85,247,0.1)] text-purple-400'
-                  }`}>
-                    {item.status}
-                  </span>
+                <div className="gradient-text" style={{ fontSize: 30, fontWeight: 900, letterSpacing: '-0.04em' }}>
+                  {s.value}
                 </div>
-                <p className="text-[var(--text-2)] text-sm">{item.desc}</p>
+                <div style={{ fontSize: 12, color: 'var(--text-3)', marginTop: 4, fontWeight: 500 }}>{s.label}</div>
               </div>
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
+      </section>
 
-        {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {[
-            { label: "Projects Built", value: "16+" },
-            { label: "Languages", value: "8+" },
-            { label: "Months Coding", value: "24+" },
-            { label: "Concepts Learned", value: "50+" },
-          ].map((stat, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="text-center p-6 glass-card border-[var(--border-accent)]"
-            >
-              <div className="text-3xl md:text-4xl font-[900] gradient-text mb-2">{stat.value}</div>
-              <div className="text-[var(--text-2)] text-sm font-semibold uppercase tracking-wider">{stat.label}</div>
-            </motion.div>
-          ))}
+      {/* Continuous Learning */}
+      <section style={{ padding: '80px 0' }}>
+        <div className="container-base">
+          <SectionHeader
+            eyebrow="Always Growing"
+            title="Continuous Learning"
+            subtitle="Topics I'm actively exploring to stay ahead of the curve."
+          />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: 12 }}>
+            {LEARNING.map((item, i) => (
+              <motion.div
+                key={item.topic}
+                className="glass-card"
+                style={{ padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 12 }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05, duration: 0.4 }}
+                whileHover={{ y: -3 }}
+              >
+                <span style={{ width: 34, height: 34, display: 'grid', placeItems: 'center', flexShrink: 0, borderRadius: 10, background: 'var(--cyan-a10)', border: '1px solid var(--border)', color: 'var(--cyan)', fontSize: 11, fontFamily: 'DM Mono, monospace', fontWeight: 700 }}>{item.icon}</span>
+                <div style={{ minWidth: 0 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {item.topic}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: 10, fontWeight: 700, color: item.status === 'In Progress' ? 'var(--cyan)' : item.status === 'Active' ? '#a78bfa' : 'var(--text-3)',
+                      letterSpacing: '0.06em', textTransform: 'uppercase', marginTop: 2,
+                    }}
+                  >
+                    {item.status}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-
-      </div>
+      </section>
     </motion.div>
   );
 }

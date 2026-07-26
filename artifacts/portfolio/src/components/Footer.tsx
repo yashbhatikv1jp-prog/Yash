@@ -1,43 +1,125 @@
 import { Link } from 'wouter';
-import { Mail } from 'lucide-react';
-import { SiGithub, SiInstagram } from 'react-icons/si';
+import { Github, Mail, Instagram } from 'lucide-react';
+
+const SOCIALS = [
+  { icon: Github,    href: 'https://github.com/Yashbhati2011',           label: 'GitHub' },
+  { icon: Mail,      href: 'mailto:yashbhatikv1jp@gmail.com',             label: 'Email' },
+  { icon: Instagram, href: 'https://instagram.com/Yash.bhati.2011',       label: 'Instagram' },
+];
+
+const LINKS = [
+  { href: '/',             label: 'Home' },
+  { href: '/about',        label: 'About' },
+  { href: '/skills',       label: 'Skills' },
+  { href: '/projects',     label: 'Projects' },
+  { href: '/achievements', label: 'Achievements' },
+  { href: '/contact',      label: 'Contact' },
+];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--border)] bg-[var(--bg-elevated)] py-12 relative z-10">
-      <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-        <div>
-          <div className="text-2xl font-[900] tracking-tight mb-4 gradient-text">YB</div>
-          <p className="text-[var(--text-2)]">Building tomorrow's tech today.</p>
-        </div>
-        
-        <div className="flex flex-col gap-3">
-          <h4 className="font-bold text-[var(--text)] mb-2">Quick Links</h4>
-          <Link href="/" className="text-[var(--text-2)] hover:text-[var(--cyan)] transition-colors">Home</Link>
-          <Link href="/about" className="text-[var(--text-2)] hover:text-[var(--cyan)] transition-colors">About</Link>
-          <Link href="/skills" className="text-[var(--text-2)] hover:text-[var(--cyan)] transition-colors">Skills</Link>
-          <Link href="/projects" className="text-[var(--text-2)] hover:text-[var(--cyan)] transition-colors">Projects</Link>
-          <Link href="/contact" className="text-[var(--text-2)] hover:text-[var(--cyan)] transition-colors">Contact</Link>
-        </div>
+    <footer
+      style={{
+        position: 'relative',
+        zIndex: 10,
+        borderTop: '1px solid var(--border)',
+        background: 'rgba(6, 6, 15, 0.95)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        padding: '48px 0 32px',
+        marginTop: 'auto',
+      }}
+    >
+      <div className="container-base">
+        {/* Top row */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '32px 48px',
+            marginBottom: 40,
+          }}
+        >
+          {/* Brand */}
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+              <div
+                style={{
+                  width: 36, height: 36, borderRadius: 10,
+                  background: 'var(--grad)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontWeight: 800, fontSize: 15, color: '#fff',
+                }}
+              >
+                YB
+              </div>
+              <span style={{ fontWeight: 700, fontSize: 16, color: 'var(--text)' }}>Yash Bhati</span>
+            </div>
+            <p style={{ fontSize: 13, color: 'var(--text-3)', lineHeight: 1.7, maxWidth: 220 }}>
+              Class 10 student & passionate developer from Narnaul, Haryana.
+            </p>
+          </div>
 
-        <div className="flex flex-col gap-3">
-          <h4 className="font-bold text-[var(--text)] mb-2">Connect</h4>
-          <div className="flex gap-4">
-            <a href="https://github.com/Yashbhati2011" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--text-2)] hover:text-[var(--cyan)] hover:border-[var(--cyan)] transition-all">
-              <SiGithub size={18} />
-            </a>
-            <a href="https://instagram.com/Yash.bhati.2011" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--text-2)] hover:text-[#E1306C] hover:border-[#E1306C] transition-all">
-              <SiInstagram size={18} />
-            </a>
-            <a href="mailto:yashbhatikv1jp@gmail.com" className="w-10 h-10 rounded-full border border-[var(--border)] flex items-center justify-center text-[var(--text-2)] hover:text-[#EA4335] hover:border-[#EA4335] transition-all">
-              <Mail size={18} />
-            </a>
+          {/* Navigation */}
+          <div>
+            <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 16 }}>
+              Navigation
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 16px' }}>
+              {LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                    className="footer-nav-link"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 16 }}>
+              Connect
+            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {SOCIALS.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-social-link"
+                >
+                  <span className="footer-social-icon"><Icon size={18} /></span>
+                  <span>{label}</span>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-      
-      <div className="container mx-auto px-6 pt-8 border-t border-[var(--border)] text-center text-[var(--text-3)] text-sm">
-        © 2025 Yash Bhati · All rights reserved · Built with React & passion
+
+        {/* Bottom bar */}
+        <div
+          style={{
+            borderTop: '1px solid var(--border)',
+            paddingTop: 24,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: 12,
+          }}
+        >
+          <p style={{ fontSize: 12, color: 'var(--text-3)' }}>
+            © {new Date().getFullYear()} Yash Bhati. Designed & Built from scratch.
+          </p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 6px #22c55e' }} />
+            <span style={{ fontSize: 12, color: 'var(--text-3)' }}>Open to opportunities</span>
+          </div>
+        </div>
       </div>
     </footer>
   );

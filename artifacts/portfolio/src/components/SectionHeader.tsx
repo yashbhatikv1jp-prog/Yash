@@ -1,27 +1,42 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 
 interface SectionHeaderProps {
-  number: string;
+  eyebrow: string;
   title: string;
   subtitle?: string;
+  centered?: boolean;
 }
 
-export default function SectionHeader({ number, title, subtitle }: SectionHeaderProps) {
+export default function SectionHeader({ eyebrow, title, subtitle, centered }: SectionHeaderProps) {
   return (
-    <motion.div 
-      initial={{ opacity: 0, x: -40 }} 
-      whileInView={{ opacity: 1, x: 0 }} 
-      transition={{ duration: 0.6 }} 
-      viewport={{ once: true }}
-      className="mb-12"
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.35 }}
+      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+      style={{ marginBottom: 72, textAlign: centered ? 'center' : undefined }}
     >
-      <div className="text-[var(--cyan)] text-sm font-semibold tracking-[0.2em] uppercase mb-4">
-        {number} / {title}
+      <div className="section-eyebrow" style={{ justifyContent: centered ? 'center' : undefined }}>
+        {!centered && <span />}
+        {eyebrow}
       </div>
-      <h2 className="text-4xl md:text-[42px] font-bold mb-4 text-[var(--text)]">
-        {subtitle || title}
+      <h2
+        style={{
+          fontSize: 'clamp(32px, 5vw, 52px)',
+          fontWeight: 800,
+          lineHeight: 1.1,
+          letterSpacing: '-0.03em',
+          color: 'var(--text)',
+          marginBottom: subtitle ? 14 : 0,
+        }}
+      >
+        {title}
       </h2>
+      {subtitle && (
+        <p style={{ fontSize: 17, color: 'var(--text-2)', maxWidth: centered ? 540 : undefined, margin: centered ? '0 auto' : undefined, lineHeight: 1.6 }}>
+          {subtitle}
+        </p>
+      )}
     </motion.div>
   );
 }

@@ -1,101 +1,236 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, Code2, BookOpen } from 'lucide-react';
+import { Trophy, Star, Award, Zap, ExternalLink } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
+
+const ACHIEVEMENTS = [
+  {
+    id: 1,
+    isPrimary: true,
+    icon: '01',
+    badge: 'National Level',
+    title: 'IIT Delhi Vidya Setu Hackathon',
+    subtitle: 'EdTech Innovation Challenge — IIT Delhi Campus',
+    year: '2025',
+    desc: 'Selected to participate in a prestigious national-level EdTech innovation hackathon hosted at IIT Delhi. Competed against student teams from across India, proposing a technology-driven solution to bridge educational gaps in rural communities. The Vidya Setu (Bridge of Knowledge) initiative focuses on leveraging emerging tech to democratize quality education.',
+    tags: ['Hackathon', 'EdTech', 'IIT Delhi', 'National Level', 'Innovation'],
+    stats: [
+      { label: 'Level',    value: 'National' },
+      { label: 'Host',     value: 'IIT Delhi' },
+      { label: 'Domain',   value: 'EdTech' },
+      { label: 'Year',     value: '2025' },
+    ],
+  },
+  {
+    id: 2,
+    isPrimary: false,
+    icon: '02',
+    badge: 'Personal Milestone',
+    title: '24+ Projects Built',
+    subtitle: 'Self-Taught Developer — Built from Scratch',
+    year: '2023–2025',
+    desc: 'Independently built and shipped over 24 projects spanning Python AI, Physics simulators, Mathematics tools, Web applications, and Core Algorithms — entirely through self-directed learning. Each project represents a real solution, not a tutorial copy.',
+    tags: ['Python', 'React', 'Physics', 'Algorithms', 'Self-Taught'],
+    stats: [
+      { label: 'Projects',    value: '24+' },
+      { label: 'Languages',   value: '5+' },
+      { label: 'Categories',  value: '4' },
+      { label: 'Duration',    value: '2 yrs' },
+    ],
+  },
+  {
+    id: 3,
+    isPrimary: false,
+    icon: '03',
+    badge: 'Academic',
+    title: 'Self-Directed STEM Excellence',
+    subtitle: 'PM SHRI Kendriya Vidyalaya Phulera — Class 10',
+    year: '2024–2025',
+    desc: 'Achieved top performance in Science and Mathematics while simultaneously pursuing advanced programming projects outside the curriculum. Demonstrated that academic rigor and passion-driven coding can coexist and reinforce each other.',
+    tags: ['Science', 'Mathematics', 'KV Phulera', 'Academic Excellence'],
+    stats: [
+      { label: 'Subject',  value: 'Science' },
+      { label: 'Grade',    value: 'Class 10' },
+      { label: 'School',   value: 'KV Phulera' },
+      { label: 'Focus',    value: 'STEM' },
+    ],
+  },
+];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i = 0) => ({
+    opacity: 1, y: 0,
+    transition: { delay: i * 0.12, duration: 0.55, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  }),
+};
 
 export default function AchievementsPage() {
   return (
-    <motion.div 
-      initial={{ opacity: 0 }} 
-      animate={{ opacity: 1 }} 
-      exit={{ opacity: 0 }} 
-      transition={{ duration: 0.3 }}
-      className="page-wrapper container mx-auto px-6"
-    >
-      <div className="py-12 md:py-20">
-        <SectionHeader number="01" title="Achievements" subtitle="Recognition" />
-        
-        {/* Main Achievement Banner */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }} 
-          whileInView={{ opacity: 1, scale: 1 }} 
-          transition={{ duration: 0.6 }} 
-          viewport={{ once: true }} 
-          className="w-full relative p-[2px] rounded-3xl overflow-hidden group mb-12"
-        >
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,var(--cyan),var(--purple),var(--cyan))] bg-[length:200%_auto] animate-[shimmer-border_3s_linear_infinite] opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
-          
-          <div className="relative glass-card rounded-[22px] p-8 md:p-16 flex flex-col md:flex-row items-center gap-10 md:gap-16 h-full bg-[var(--bg-elevated)] border-none">
-            <div className="flex-shrink-0">
-              <div className="w-32 h-32 md:w-48 md:h-48 rounded-full bg-[var(--bg)] flex items-center justify-center border-4 border-[#FFD700] shadow-[0_0_40px_rgba(255,215,0,0.3)] group-hover:shadow-[0_0_60px_rgba(255,215,0,0.5)] transition-shadow duration-500 animate-[trophy-float_4s_ease-in-out_infinite]">
-                <Trophy size={80} className="text-[#FFD700]" strokeWidth={1.5} />
-              </div>
-            </div>
-            
-            <div className="text-center md:text-left flex-1">
-              <h3 className="text-3xl md:text-5xl font-[900] text-transparent bg-clip-text mb-4" style={{ backgroundImage: 'var(--gradient-r)' }}>
-                IIT Delhi — Vidya Setu Hackathon
-              </h3>
-              <div className="inline-block px-5 py-2 rounded-full bg-[var(--purple-dim)] text-[var(--purple)] text-sm font-bold mb-6 border border-[var(--purple-glow)] uppercase tracking-wider">
-                National Level EdTech Innovation Challenge
-              </div>
-              <p className="text-lg md:text-xl text-[var(--text-2)] leading-relaxed mb-8">
-                Competed in the prestigious Vidya Setu Hackathon organized by IIT Delhi — one of India's premier technology institutions. This national-level challenge brought together student developers to build technology-driven solutions for bridging educational gaps. Selected as a participant, demonstrating exceptional problem-solving and technical aptitude on a national stage.
-              </p>
-              <div className="flex flex-wrap justify-center md:justify-start gap-4">
-                <span className="px-5 py-2.5 rounded-xl bg-[var(--bg-glass)] border border-[var(--border)] text-[var(--text)] text-sm font-semibold flex items-center gap-2">
-                  <span className="text-[var(--cyan)]">🏛</span> IIT Delhi
-                </span>
-                <span className="px-5 py-2.5 rounded-xl bg-[var(--bg-glass)] border border-[var(--border)] text-[var(--text)] text-sm font-semibold flex items-center gap-2">
-                  <span className="text-[var(--purple)]">🇮🇳</span> National Stage
-                </span>
-              </div>
-            </div>
+    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
+      <section className="page-section">
+        <div className="container-base">
+          <SectionHeader
+            eyebrow="Recognition"
+            title="Achievements"
+            subtitle="Milestones reached through relentless curiosity and self-directed learning."
+          />
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+            {ACHIEVEMENTS.map((ach, i) => (
+              <motion.div
+                key={ach.id}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                custom={i}
+              >
+                <div
+                  className="glass-card"
+                  style={{
+                    padding: 0,
+                    overflow: 'hidden',
+                    border: ach.isPrimary
+                      ? '1px solid rgba(0,229,255,0.3)'
+                      : '1px solid var(--border)',
+                    position: 'relative',
+                  }}
+                >
+                  {/* Shimmer stripe for primary */}
+                  {ach.isPrimary && (
+                    <div
+                      aria-hidden
+                      style={{
+                        position: 'absolute',
+                        top: 0, left: 0, right: 0,
+                        height: 3,
+                        background: 'linear-gradient(90deg, #00e5ff, #8b5cf6, #ec4899, #00e5ff)',
+                        backgroundSize: '200% 100%',
+                        animation: 'shimmer 3s linear infinite',
+                      }}
+                    />
+                  )}
+
+                  <div
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+                      gap: 0,
+                    }}
+                  >
+                    {/* Left: Main info */}
+                    <div style={{ padding: '28px 32px', paddingTop: ach.isPrimary ? 36 : 28 }}>
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16, marginBottom: 20 }}>
+                        <div
+                          style={{
+                            width: 56, height: 56, borderRadius: 16, flexShrink: 0,
+                            background: ach.isPrimary ? 'var(--cyan-a10)' : 'var(--violet-a10)',
+                            border: `1px solid ${ach.isPrimary ? 'rgba(0,229,255,0.2)' : 'rgba(139,92,246,0.2)'}`,
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            fontSize: 26,
+                          }}
+                        >
+                          {ach.icon}
+                        </div>
+                        <div style={{ minWidth: 0 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6, flexWrap: 'wrap' }}>
+                            <span
+                              style={{
+                                fontSize: 10, fontWeight: 800, letterSpacing: '0.1em',
+                                textTransform: 'uppercase',
+                                color: ach.isPrimary ? 'var(--cyan)' : '#a78bfa',
+                                background: ach.isPrimary ? 'var(--cyan-a10)' : 'var(--violet-a10)',
+                                padding: '2px 8px', borderRadius: 4,
+                              }}
+                            >
+                              {ach.badge}
+                            </span>
+                            <span style={{ fontSize: 11, color: 'var(--text-3)', fontWeight: 600 }}>{ach.year}</span>
+                          </div>
+                          <h2 style={{ fontSize: 'clamp(17px, 2.5vw, 22px)', fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.02em', lineHeight: 1.2 }}>
+                            {ach.title}
+                          </h2>
+                          <p style={{ fontSize: 12, color: 'var(--text-3)', marginTop: 4 }}>{ach.subtitle}</p>
+                        </div>
+                      </div>
+
+                      <p style={{ fontSize: 14, color: 'var(--text-2)', lineHeight: 1.75, marginBottom: 20 }}>
+                        {ach.desc}
+                      </p>
+
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                        {ach.tags.map((tag) => (
+                          <span key={tag} className="tech-badge badge-default">{tag}</span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Right: Stats */}
+                    <div
+                      style={{
+                        borderLeft: '1px solid var(--border)',
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr',
+                        padding: '28px 24px',
+                        gap: 0,
+                        alignContent: 'start',
+                      }}
+                    >
+                      {ach.stats.map((stat, si) => (
+                        <div
+                          key={stat.label}
+                          style={{
+                            padding: '16px',
+                            borderBottom: si < 2 ? '1px solid var(--border)' : 'none',
+                            borderRight: si % 2 === 0 ? '1px solid var(--border)' : 'none',
+                            textAlign: 'center',
+                          }}
+                        >
+                          <div className="gradient-text" style={{ fontSize: 22, fontWeight: 900, letterSpacing: '-0.03em' }}>
+                            {stat.value}
+                          </div>
+                          <div style={{ fontSize: 11, color: 'var(--text-3)', marginTop: 4, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                            {stat.label}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
 
-        {/* Secondary Achievements */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.6, delay: 0.2 }} 
-            viewport={{ once: true }} 
-            className="glass-card p-8 group hover:border-[var(--cyan)] transition-colors relative overflow-hidden"
+          {/* Motivational quote */}
+          <motion.div
+            className="glass-card"
+            style={{ marginTop: 40, padding: 36, textAlign: 'center' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-              <Code2 size={120} />
-            </div>
-            <div className="w-14 h-14 rounded-2xl bg-[var(--cyan-dim)] text-[var(--cyan)] flex items-center justify-center mb-6 border border-[var(--cyan-glow)]">
-              <Code2 size={28} />
-            </div>
-            <h3 className="text-2xl font-bold text-[var(--text)] mb-4">16+ Projects Built</h3>
-            <p className="text-[var(--text-2)] leading-relaxed relative z-10">
-              Independently built and documented over 16 fully functional projects across Physics, Mathematics, and Computer Science as a Class 10 student. Showcasing a strong grasp of applied logic and real-world problem solving.
-            </p>
-          </motion.div>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.6, delay: 0.4 }} 
-            viewport={{ once: true }} 
-            className="glass-card p-8 group hover:border-[var(--purple)] transition-colors relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 p-8 opacity-5 group-hover:opacity-10 transition-opacity">
-              <BookOpen size={120} />
-            </div>
-            <div className="w-14 h-14 rounded-2xl bg-[var(--purple-dim)] text-[var(--purple)] flex items-center justify-center mb-6 border border-[var(--purple-glow)]">
-              <BookOpen size={28} />
-            </div>
-            <h3 className="text-2xl font-bold text-[var(--text)] mb-4">Self-Taught Developer</h3>
-            <p className="text-[var(--text-2)] leading-relaxed relative z-10">
-              Learned Python, HTML, CSS, JavaScript, and C++ entirely through self-directed study and practical application — without formal computer science courses. Driven by pure curiosity and a passion for technology.
+             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 12, color: 'var(--cyan)', letterSpacing: '.12em', marginBottom: 14 }}>FIELD NOTE / 01</div>
+            <blockquote
+              style={{
+                fontSize: 'clamp(16px, 2.5vw, 20px)',
+                fontWeight: 700,
+                color: 'var(--text)',
+                lineHeight: 1.5,
+                letterSpacing: '-0.01em',
+                maxWidth: 600,
+                margin: '0 auto',
+                fontStyle: 'italic',
+              }}
+            >
+              "The best time to build was yesterday. The second best time is now."
+            </blockquote>
+            <p style={{ fontSize: 13, color: 'var(--text-3)', marginTop: 12 }}>
+              — The philosophy behind every project I build
             </p>
           </motion.div>
         </div>
-        
-      </div>
+      </section>
     </motion.div>
   );
 }
