@@ -235,7 +235,6 @@ export default function HomePage() {
           <ChevronDown size={18} />
         </motion.div>
       </section>
-
       {/* Quick stats strip */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -247,7 +246,7 @@ export default function HomePage() {
           background: 'rgba(6,6,15,0.6)',
           backdropFilter: 'blur(20px)',
         }}
-      >
+        className="bg-[color:var(--border-hl)] text-[19px] font-medium">
         <div className="container-base">
           <div
             style={{
@@ -272,7 +271,7 @@ export default function HomePage() {
                 }}
               >
                 <div
-                  className="gradient-text"
+                  className="gradient-text text-center text-[#000000]"
                   style={{ fontSize: 28, fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1 }}
                 >
                   {stat.value}
