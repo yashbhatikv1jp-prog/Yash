@@ -703,7 +703,7 @@ export default function ProjectsPage() {
               display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 40,
               paddingBottom: 24, borderBottom: '1px solid var(--border)',
             }}
-            className="text-left">
+            className="text-center justify-center items-start flex-row gap-[15px]">
             {CATS.map((cat) => (
               <button
                 key={cat}
