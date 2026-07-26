@@ -160,7 +160,7 @@ export default function Navbar() {
             </button>
             <Link
               href="/contact"
-              className="desktop-cta"
+              className="desktop-cta text-[18px] font-bold justify-center items-center"
               style={{
                 alignItems: 'center',
                 gap: 6,
@@ -175,9 +175,7 @@ export default function Navbar() {
                 transition: 'transform 0.2s, box-shadow 0.2s',
                 whiteSpace: 'nowrap',
               }}
-            >
-              Hire Me
-            </Link>
+            >Get in Touch</Link>
 
             {/* Mobile Hamburger */}
             <button
@@ -205,7 +203,6 @@ export default function Navbar() {
           </div>
         </div>
       </header>
-
       {/* ── Full-Screen Mobile Menu Overlay ── */}
       <AnimatePresence>
         {mobileOpen && (
