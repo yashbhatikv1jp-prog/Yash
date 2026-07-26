@@ -690,7 +690,7 @@ export default function ProjectsPage() {
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
       <section className="page-section">
-        <div className="container-base">
+        <div className="container-base text-[18px] font-semibold text-center pl-[70px] pr-[70px] pt-[0px] pb-[0px]">
           <SectionHeader
             eyebrow="Portfolio"
             title="Featured Work"
@@ -757,7 +757,6 @@ export default function ProjectsPage() {
           </motion.div>
         </div>
       </section>
-
       {/* Code Modal */}
       <CodeModal
         isOpen={!!modal}
