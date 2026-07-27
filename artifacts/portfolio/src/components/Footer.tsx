@@ -42,7 +42,9 @@ export default function Footer() {
         >
           {/* Brand */}
           <div className="border-t-[0px] border-r-[0px] border-b-[0px] border-l-[0px]">
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+            <div
+              style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}
+              className="font-semibold text-[#388cc7] bg-[#91373700]">
               <div
                 style={{
                   width: 36, height: 36, borderRadius: 10,
