@@ -29,7 +29,7 @@ export default function Footer() {
         padding: '48px 0 32px',
         marginTop: 'auto',
       }}
-      className="bg-[#616de869]">
+      className="bg-[#000000f2]">
       <div className="container-base">
         {/* Top row */}
         <div
@@ -57,15 +57,17 @@ export default function Footer() {
               </div>
               <span
                 style={{ fontWeight: 700, fontSize: 16, color: 'var(--text)' }}
-                className="text-[24px]">Yash Bhati</span>
+                className="text-[24px] text-[#00eeff]">Yash Bhati</span>
             </div>
-            <p style={{ fontSize: 13, color: 'var(--text-3)', lineHeight: 1.7, maxWidth: 220 }}>
+            <p
+              style={{ fontSize: 13, color: 'var(--text-3)', lineHeight: 1.7, maxWidth: 220 }}
+              className="text-[#039eff]">
               Class 10 student & passionate developer from Narnaul, Haryana.
             </p>
           </div>
 
           {/* Navigation */}
-          <div>
+          <div className="text-[#1a97ff]">
             <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-3)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 16 }}>
               Navigation
             </p>
