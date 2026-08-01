@@ -109,26 +109,27 @@ export default function HomePage() {
             {/* Rotating gradient ring */}
             <div
               style={{
-                position: 'absolute', inset: -4, borderRadius: '50%', overflow: 'hidden',
+               position: 'absolute', inset: -2, borderRadius: '50%', overflow: 'hidden',
               }}
             >
               <div
                 style={{
-                  position: 'absolute', inset: '-60%',
-                  background: 'conic-gradient(from 0deg, transparent 0deg, #00e5ff 60deg, #8b5cf6 180deg, transparent 220deg)',
-                  animation: 'spin-ring 3s linear infinite',
+                   position: 'absolute', inset: '-60%',
+                   background: 'conic-gradient(from 0deg, transparent 0deg, #22d3ee 55deg, #a855f7 180deg, transparent 225deg)',
+                   animation: 'spin-ring 3s linear infinite',
+                   filter: 'drop-shadow(0 0 7px rgba(34,211,238,.8)) drop-shadow(0 0 10px rgba(168,85,247,.45))',
                 }}
               />
             </div>
             {/* White separator ring */}
-            <div style={{ position: 'absolute', inset: 2, borderRadius: '50%', background: 'var(--bg)' }} />
+             <div style={{ position: 'absolute', inset: 1, borderRadius: '50%', background: 'var(--bg)' }} />
             {/* Photo */}
             <img
               src={profileImg}
               alt="Yash Bhati"
               style={{
-                position: 'absolute', inset: 6,
-                width: 'calc(100% - 12px)', height: 'calc(100% - 12px)',
+                 position: 'absolute', inset: 4,
+                 width: 'calc(100% - 8px)', height: 'calc(100% - 8px)',
                 borderRadius: '50%',
                 objectFit: 'cover',
                 objectPosition: 'center top',

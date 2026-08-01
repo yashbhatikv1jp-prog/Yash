@@ -57,7 +57,7 @@ export default function Footer() {
               </div>
               <span
                 style={{ fontWeight: 700, fontSize: 16, color: 'var(--text)' }}
-                className="text-[24px] text-white">Yash Bhati</span>
+                className="text-[24px] text-gray-100">Yash Bhati</span>
             </div>
             <p
               style={{ fontSize: 13, color: 'var(--text-3)', lineHeight: 1.7, maxWidth: 220 }}
@@ -76,7 +76,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                    className="footer-nav-link"
+                    className="footer-nav-link text-gray-100"
                 >
                   {link.label}
                 </Link>
@@ -96,7 +96,7 @@ export default function Footer() {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="footer-social-link text-[#1a97ff]"
+                  className="footer-social-link text-gray-100"
                 >
                   <span className="footer-social-icon"><Icon size={18} /></span>
                   <span>{label}</span>

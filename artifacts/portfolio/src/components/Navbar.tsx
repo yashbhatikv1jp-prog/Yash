@@ -46,13 +46,13 @@ export default function Navbar() {
           zIndex: 200,
           padding: scrolled ? '0' : '0',
           transition: 'background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease',
-          background: scrolled ? 'var(--surface-2)' : 'var(--surface)',
-          backdropFilter: 'blur(24px) saturate(160%)',
+           background: 'rgba(255,255,255,0.70)',
+           backdropFilter: 'blur(14px) saturate(160%)',
           WebkitBackdropFilter: 'blur(24px) saturate(160%)',
           borderBottom: scrolled
             ? '1px solid rgba(255,255,255,0.06)'
             : '1px solid transparent',
-          boxShadow: scrolled ? '0 4px 30px rgba(0,0,0,0.3)' : 'none',
+           boxShadow: scrolled ? '0 4px 30px rgba(15,23,42,0.14)' : '0 2px 20px rgba(15,23,42,0.06)',
         }}
       >
         <div
@@ -207,7 +207,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="mobile-overlay"
+            className="mobile-overlay fixed inset-0 z-50"
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
