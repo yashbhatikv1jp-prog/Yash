@@ -16,10 +16,6 @@ export default function SectionHeader({ eyebrow, title, subtitle, centered }: Se
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       style={{ marginBottom: 72, textAlign: centered ? 'center' : undefined }}
     >
-      <div className="section-eyebrow" style={{ justifyContent: centered ? 'center' : undefined }}>
-        {!centered && <span />}
-        {eyebrow}
-      </div>
       <h2
         style={{
           fontSize: 'clamp(32px, 5vw, 52px)',

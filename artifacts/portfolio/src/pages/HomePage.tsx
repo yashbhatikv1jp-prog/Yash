@@ -240,13 +240,13 @@ export default function HomePage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.2, duration: 0.6 }}
-        style={{
+         style={{
           borderTop: '1px solid var(--border)',
           borderBottom: '1px solid var(--border)',
-          background: 'rgba(6,6,15,0.6)',
+           background: 'linear-gradient(110deg, rgba(0,127,174,.12), rgba(110,85,200,.14), rgba(211,75,136,.10))',
           backdropFilter: 'blur(20px)',
         }}
-        className="text-[19px] font-medium text-[#53e0d4] bg-[#9be4e899]">
+         className="home-stats-strip text-[19px] font-medium text-[#53e0d4]">
         <div className="container-base">
           <div
             style={{
@@ -271,7 +271,7 @@ export default function HomePage() {
                 }}
               >
                 <div
-                  className="gradient-text text-center text-[#000000]"
+                  className="gradient-text text-[color:var(--text)]"
                   style={{ fontSize: 28, fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1 }}
                 >
                   {stat.value}
