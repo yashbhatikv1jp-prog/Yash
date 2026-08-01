@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
-import { ArrowRight, ChevronDown, Zap, Trophy } from 'lucide-react';
+import { ArrowRight, Zap, Trophy } from 'lucide-react';
 import profileImg from '@assets/profile_1784802713138.jpg';
 
 const TITLES = [
@@ -221,20 +221,6 @@ export default function HomePage() {
           </motion.div>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.8, duration: 1 }}
-          style={{
-            position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)',
-            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
-            color: 'var(--text-3)', animation: 'bounce-gentle 2s ease-in-out infinite',
-          }}
-        >
-          <span style={{ fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', fontWeight: 600 }}>Scroll</span>
-          <ChevronDown size={18} />
-        </motion.div>
       </section>
       {/* Quick stats strip */}
       <motion.div
