@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Braces, LoaderCircle } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 export function NeonPreloader() {
   const [visible, setVisible] = useState(true);
@@ -19,14 +19,14 @@ export function NeonPreloader() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          aria-label="Loading portfolio"
+          aria-label="Welcome"
           role="status"
         >
           <div className="preloader-mark">
-            <Braces size={22} strokeWidth={1.8} />
+            <Sparkles size={22} strokeWidth={1.8} />
           </div>
-          <LoaderCircle className="preloader-spinner" size={28} strokeWidth={1.5} />
-          <span>INITIALIZING / YB</span>
+          <span className="preloader-welcome">Welcome</span>
+          <span className="preloader-caption">Yash Bhati</span>
         </motion.div>
       )}
     </AnimatePresence>

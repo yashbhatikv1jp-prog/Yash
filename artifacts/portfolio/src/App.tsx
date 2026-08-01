@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Route, Switch, Router as WouterRouter } from 'wouter';
+import { Route, Switch, Router as WouterRouter, useLocation } from 'wouter';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
@@ -20,40 +20,50 @@ import { CursorGlow, NeonPreloader, ScrollProgress } from './components/Experien
 
 const queryClient = new QueryClient();
 
-function App() {
+function RouteShell() {
+  const [location] = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [location]);
 
+  return (
+    <>
+      <NeonPreloader />
+      <ScrollProgress />
+      <CursorGlow />
+      {/* Global animated background — behind everything */}
+      <AnimatedBackground />
+
+      {/* App shell */}
+      <div style={{ position: 'relative', zIndex: 10, minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <Navbar />
+        <main style={{ flex: 1, paddingTop: 64 }}>
+          <Switch>
+            <Route path="/"             component={HomePage} />
+            <Route path="/about"        component={AboutPage} />
+            <Route path="/skills"       component={SkillsPage} />
+            <Route path="/projects"     component={ProjectsPage} />
+            <Route path="/achievements" component={AchievementsPage} />
+            <Route path="/contact"      component={ContactPage} />
+            <Route                      component={NotFound} />
+          </Switch>
+        </main>
+        <Footer />
+      </div>
+
+      <Toaster />
+    </>
+  );
+}
+
+function App() {
   return (
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-          <NeonPreloader />
-          <ScrollProgress />
-          <CursorGlow />
-          {/* Global animated background — behind everything */}
-          <AnimatedBackground />
-
-          {/* App shell */}
-          <div style={{ position: 'relative', zIndex: 10, minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-            <Navbar />
-            <main style={{ flex: 1, paddingTop: 64 }}>
-              <Switch>
-                <Route path="/"             component={HomePage} />
-                <Route path="/about"        component={AboutPage} />
-                <Route path="/skills"       component={SkillsPage} />
-                <Route path="/projects"     component={ProjectsPage} />
-                <Route path="/achievements" component={AchievementsPage} />
-                <Route path="/contact"      component={ContactPage} />
-                <Route                      component={NotFound} />
-              </Switch>
-            </main>
-            <Footer />
-          </div>
-
-          <Toaster />
+            <RouteShell />
           </WouterRouter>
         </TooltipProvider>
       </QueryClientProvider>

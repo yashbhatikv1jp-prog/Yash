@@ -56,8 +56,8 @@ export default function Footer() {
                 YB
               </div>
               <span
-                style={{ fontWeight: 700, fontSize: 16, color: 'var(--text)' }}
-                className="text-[24px] text-gray-100">Yash Bhati</span>
+                style={{ fontWeight: 800, fontSize: 16, color: '#FFFFFF' }}
+                className="text-[24px] text-white font-extrabold">Yash Bhati</span>
             </div>
             <p
               style={{ fontSize: 13, color: 'var(--text-3)', lineHeight: 1.7, maxWidth: 220 }}
