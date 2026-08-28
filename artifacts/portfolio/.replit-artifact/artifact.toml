@@ -11,12 +11,11 @@ paths = [ "/" ]
 localPort = 21113
 
 [services.development]
-run = "pnpm --filter @workspace/portfolio run dev"
+run = '''node -e "const http=require('http'),fs=require('fs'),path=require('path');const root=process.cwd();http.createServer((req,res)=>{let p=path.join(root,decodeURIComponent(req.url.split('?')[0]));if(p.endsWith('/'))p+='index.html';if(!p.startsWith(root)||!fs.existsSync(p)||fs.statSync(p).isDirectory())p=path.join(root,'index.html');const types={'.html':'text/html','.css':'text/css','.js':'application/javascript'};res.setHeader('Content-Type',types[path.extname(p)]||'text/plain');res.end(fs.readFileSync(p));}).listen(process.env.PORT,'0.0.0.0')"'''
 
 [services.production]
-build = [ "pnpm", "--filter", "@workspace/portfolio", "run", "build" ]
 serve = "static"
-publicDir = "artifacts/portfolio/dist/public"
+publicDir = "artifacts/portfolio"
 
 [[services.production.rewrites]]
 from = "/*"

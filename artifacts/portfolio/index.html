@@ -1,25 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
   <head>
-    <meta name="google-site-verification" content="YjVUc6-4sA7zkpg1dMdRKBYhWdg-YFF568njicvW7Cs" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Yash Bhati</title>
-    <meta name="description" content="Yash Bhati" />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Yash Bhati" />
-    <meta property="og:description" content="Yash Bhati" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Yash Bhati" />
-    <meta name="twitter:description" content="Yash Bhati" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Yash Bhati — Android app developer and student builder creating practical Java, Kotlin, Python, and web projects.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Yash Bhati">
+    <meta property="og:description" content="Android apps, learning tools, and thoughtful software projects by Yash Bhati.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Yash Bhati">
+    <meta name="twitter:description" content="Android apps, learning tools, and thoughtful software projects by Yash Bhati.">
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div id="welcome-splash" class="welcome-splash" role="status" aria-label="Welcome">
+      <div class="splash-mark">✦</div>
+      <div class="splash-title">Welcome</div>
+      <div class="splash-caption">YASH BHATI</div>
+    </div>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <div class="background" aria-hidden="true">
+      <span class="orb orb-one"></span><span class="orb orb-two"></span><span class="orb orb-three"></span>
+      <span class="particle-field"></span><span class="grid-overlay"></span>
+    </div>
+    <header id="site-header" class="site-header">
+      <div class="container nav-inner">
+        <a class="brand" href="#home" aria-label="Yash Bhati home"><span class="brand-mark">YB</span><span class="brand-name">Yash Bhati</span></a>
+        <nav class="desktop-nav" aria-label="Main navigation">
+          <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a><a href="#study-resources" class="resources-nav">Study Resources</a>
+        </nav>
+        <div class="nav-actions">
+          <button id="theme-toggle" class="icon-button" aria-label="Switch theme">☼</button>
+          <a class="nav-cta" href="#contact">Get in Touch</a>
+          <button id="menu-toggle" class="icon-button menu-button" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+        </div>
+      </div>
+    </header>
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu-top"><a class="brand" href="#home"><span class="brand-mark">YB</span><span class="brand-name">Yash Bhati</span></a><button id="mobile-theme-toggle" class="icon-button" aria-label="Switch theme">☼</button></div>
+      <nav class="mobile-nav" aria-label="Mobile navigation">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a><a href="#study-resources">Study Resources</a>
+      </nav>
+      <a class="button button-primary mobile-contact" href="#contact">Get In Touch <span>→</span></a>
+    </div>
+    <main id="app" class="app-shell"></main>
+    <div id="modal-root"></div>
+    <script src="script.js"></script>
   </body>
 </html>
