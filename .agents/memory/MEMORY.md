@@ -1,1 +1,0 @@
-- [Offline portfolio architecture](offline-portfolio-architecture.md) — Keep the browser runtime dependency-free with hash routes and self-contained assets; isolate preview serving from website code.
