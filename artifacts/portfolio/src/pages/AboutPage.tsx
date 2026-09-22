@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { MapPin, GraduationCap, Code2, Trophy, Cpu, BookOpen } from 'lucide-react';
-import profileImg from '@assets/profile_1784802713138.jpg';
+import profileImg from '@assets/file_00000000e6908211a5da00ea8effb67b_1790070282930.png';
 import SectionHeader from '../components/SectionHeader';
 
 const FACTS = [

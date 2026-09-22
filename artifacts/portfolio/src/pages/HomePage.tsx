@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
 import { ArrowRight, Zap, Trophy } from 'lucide-react';
-import profileImg from '@assets/profile_1784802713138.jpg';
+import profileImg from '@assets/file_00000000e6908211a5da00ea8effb67b_1790070282930.png';
 
 const TITLES = [
   'Python Developer',
@@ -72,6 +72,7 @@ export default function HomePage() {
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       {/* Hero */}
       <section
+        className="home-hero"
         style={{
           flex: 1,
           display: 'flex',
@@ -132,7 +133,7 @@ export default function HomePage() {
                  width: 'calc(100% - 8px)', height: 'calc(100% - 8px)',
                 borderRadius: '50%',
                 objectFit: 'cover',
-                objectPosition: 'center top',
+                objectPosition: 'center 22%',
               }}
             />
           </motion.div>
