@@ -210,7 +210,7 @@ export default function AchievementsPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-             <div style={{ fontFamily: 'DM Mono, monospace', fontSize: 12, color: 'var(--cyan)', letterSpacing: '.12em', marginBottom: 14 }}>FIELD NOTE / 01</div>
+             <div style={{ fontFamily: 'Lora, serif', fontSize: 12, color: 'var(--cyan)', letterSpacing: '.12em', marginBottom: 14 }}>FIELD NOTE / 01</div>
             <blockquote
               style={{
                 fontSize: 'clamp(16px, 2.5vw, 20px)',

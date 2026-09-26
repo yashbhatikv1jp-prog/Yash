@@ -169,7 +169,7 @@ export default function SkillsPage() {
                 transition={{ delay: i * 0.05, duration: 0.4 }}
                 whileHover={{ y: -3 }}
               >
-                <span style={{ width: 34, height: 34, display: 'grid', placeItems: 'center', flexShrink: 0, borderRadius: 10, background: 'var(--cyan-a10)', border: '1px solid var(--border)', color: 'var(--cyan)', fontSize: 11, fontFamily: 'DM Mono, monospace', fontWeight: 700 }}>{item.icon}</span>
+                <span style={{ width: 34, height: 34, display: 'grid', placeItems: 'center', flexShrink: 0, borderRadius: 10, background: 'var(--cyan-a10)', border: '1px solid var(--border)', color: 'var(--cyan)', fontSize: 11, fontFamily: 'Lora, serif', fontWeight: 700 }}>{item.icon}</span>
                 <div style={{ minWidth: 0 }}>
                   <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                     {item.topic}

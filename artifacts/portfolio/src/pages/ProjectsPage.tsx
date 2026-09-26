@@ -662,7 +662,7 @@ function ProjectCard({ project, onViewCode }: { project: Project; onViewCode?: (
               background: 'var(--cyan-a10)', border: '1px solid rgba(0,229,255,0.2)',
               padding: '5px 12px', borderRadius: 6,
               cursor: 'pointer', transition: 'all 0.2s ease',
-              fontFamily: 'Inter, sans-serif',
+              fontFamily: 'Lora, serif',
               whiteSpace: 'nowrap',
             }}
           >

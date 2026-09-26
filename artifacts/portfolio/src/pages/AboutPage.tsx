@@ -253,7 +253,7 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.5 }}
               >
-                <div style={{ fontFamily: 'var(--font-mono, "DM Mono")', color: 'var(--cyan)', fontSize: 13, fontWeight: 700, marginBottom: 18 }}>{p.mark} / BUILD</div>
+                <div style={{ fontFamily: 'Lora, serif', color: 'var(--cyan)', fontSize: 13, fontWeight: 700, marginBottom: 18 }}>{p.mark} / BUILD</div>
                 <h3 style={{ fontSize: 15, fontWeight: 700, color: 'var(--text)', marginBottom: 8 }}>{p.title}</h3>
                 <p style={{ fontSize: 13, color: 'var(--text-2)', lineHeight: 1.7 }}>{p.desc}</p>
               </motion.div>

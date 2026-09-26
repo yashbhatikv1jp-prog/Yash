@@ -87,7 +87,7 @@ export default function CodeModal({ isOpen, onClose, title, code }: CodeModalPro
                     border: '1px solid var(--border-hl)', color: 'var(--cyan)',
                     fontSize: 12, fontWeight: 600, cursor: 'pointer',
                     transition: 'all 0.2s',
-                    fontFamily: 'Inter, sans-serif',
+                    fontFamily: 'Lora, serif',
                   }}
                 >
                   <Copy size={12} />
