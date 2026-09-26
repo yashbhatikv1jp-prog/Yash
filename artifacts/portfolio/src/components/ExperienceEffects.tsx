@@ -24,6 +24,13 @@ export function NeonPreloader() {
           <div className="preloader-mark" aria-hidden="true">
             <span className="preloader-initials">YB</span>
           </div>
+          <div className="preloader-welcome" aria-label="Welcome">
+            {'Welcome'.split('').map((letter, index) => (
+              <span key={`${letter}-${index}`} style={{ animationDelay: `${index * 90}ms` }}>
+                {letter}
+              </span>
+            ))}
+          </div>
           <span className="preloader-caption">YASH BHATI</span>
           <span className="preloader-status">INITIALIZING PORTFOLIO</span>
         </motion.div>

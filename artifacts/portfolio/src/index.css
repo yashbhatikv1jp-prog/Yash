@@ -95,15 +95,18 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible 
 .neon-preloader::before,.neon-preloader::after{content:'';position:absolute;z-index:-1;width:42vw;height:42vw;max-width:620px;max-height:620px;border-radius:50%;filter:blur(24px);pointer-events:none;opacity:.72}
 .neon-preloader::before{top:-30%;left:-18%;background:radial-gradient(circle at 35% 40%,rgba(48,80,255,.72),rgba(25,44,176,.34) 34%,transparent 70%)}
 .neon-preloader::after{right:-18%;bottom:-32%;background:radial-gradient(circle at 60% 55%,rgba(108,37,255,.72),rgba(48,32,170,.34) 34%,transparent 70%)}
-.preloader-mark,.preloader-caption,.preloader-status{position:relative;z-index:1}
+.preloader-mark,.preloader-welcome,.preloader-caption,.preloader-status{position:relative;z-index:1}
 .preloader-mark { width: 78px; height: 78px; display: grid; place-items: center; position:relative; color: #dff8ff; border: 1px solid rgba(92,180,255,.82); border-radius: 50%; background: rgba(4,13,39,.78); box-shadow: 0 0 14px rgba(39,148,255,.88), 0 0 36px rgba(64,83,255,.48), inset 0 0 18px rgba(60,175,255,.16); animation: preloader-pulse 2.2s ease-in-out infinite; }
 .preloader-mark::before{content:'';position:absolute;inset:-8px;border:1px solid rgba(67,207,255,.8);border-right-color:rgba(150,95,255,.9);border-bottom-color:transparent;border-radius:50%;animation:preloader-spin 3.2s linear infinite}
 .preloader-mark::after{content:'';position:absolute;inset:-15px;border:1px solid rgba(73,129,255,.22);border-left-color:rgba(0,242,254,.58);border-radius:50%;animation:preloader-spin 5.5s linear infinite reverse}
 .preloader-initials{font-size:24px;font-weight:700;letter-spacing:-.12em;line-height:1;color:#fff;text-shadow:0 0 10px rgba(111,218,255,.92),0 0 24px rgba(93,91,255,.68);transform:translateX(-1px)}
+.preloader-welcome{display:flex;justify-content:center;align-items:center;font-size:clamp(50px,10vw,94px);font-weight:500;letter-spacing:-.065em;line-height:.95;color:#f7fbff;text-shadow:0 0 12px rgba(93,186,255,.3),0 0 34px rgba(75,91,255,.22)}
+.preloader-welcome span{display:inline-block;opacity:0;filter:blur(12px);transform:translateY(18px) scale(.92);animation:welcome-letter-in .82s cubic-bezier(.16,1,.3,1) forwards}
 .preloader-caption { font-size: 11px; letter-spacing: .28em; color: rgba(226,245,255,.92); text-shadow:0 0 12px rgba(74,178,255,.38); }
 .preloader-status{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:8px;letter-spacing:.2em;color:rgba(154,181,220,.68)}
 @keyframes preloader-spin{to{transform:rotate(360deg)}}
 @keyframes preloader-pulse{0%,100%{transform:scale(1);box-shadow:0 0 14px rgba(39,148,255,.88),0 0 36px rgba(64,83,255,.48),inset 0 0 18px rgba(60,175,255,.16)}50%{transform:scale(1.035);box-shadow:0 0 20px rgba(39,188,255,1),0 0 54px rgba(83,83,255,.64),inset 0 0 22px rgba(60,175,255,.22)}}
+@keyframes welcome-letter-in{0%{opacity:0;filter:blur(12px);transform:translateY(18px) scale(.92)}65%{opacity:1;filter:blur(0);transform:translateY(-2px) scale(1.015)}100%{opacity:1;filter:blur(0);transform:translateY(0) scale(1)}}
 .scroll-progress { position: fixed; inset: 0 0 auto; z-index: 500; height: 2px; pointer-events: none; }
 .scroll-progress-fill { height: 100%; width: 100%; transform-origin: left center; background: var(--grad); box-shadow: 0 0 14px var(--cyan), 0 0 5px var(--violet); }
 .cursor-glow { display: none; position: fixed; z-index: 100001; top: var(--cursor-y); left: var(--cursor-x); width: 9px; height: 9px; border-radius: 50%; pointer-events: none; background: var(--cyan); box-shadow: 0 0 10px 2px var(--cyan), 0 0 24px 6px var(--cyan-a20); transform: translate(-50%, -50%); }
