@@ -210,15 +210,25 @@ export default function HomePage() {
           <motion.div
             variants={fadeUp}
             custom={5}
-            style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 14 }}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, width: '100%' }}
           >
-            <Link href="/projects" className="btn-glow" style={{ textDecoration: 'none' }}>
-              Explore Projects
-              <ArrowRight size={16} />
-            </Link>
-            <Link href="/contact" className="btn-outline" style={{ textDecoration: 'none' }}>
-              Get in Touch
-            </Link>
+            <div className="hero-primary-actions">
+              <Link href="/projects" className="btn-glow" style={{ textDecoration: 'none' }}>
+                Explore Projects
+                <ArrowRight size={16} />
+              </Link>
+              <Link href="/contact" className="btn-outline" style={{ textDecoration: 'none' }}>
+                Get in Touch
+              </Link>
+            </div>
+            <a
+              className="btn-website"
+              href="https://yash-files-share.lovable.app"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Plz Visit Our Website: Yash File Share | Fast &amp; Secure P2P Transfer
+            </a>
           </motion.div>
         </motion.div>
 
