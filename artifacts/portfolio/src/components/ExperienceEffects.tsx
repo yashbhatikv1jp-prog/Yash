@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
 
 export function NeonPreloader() {
   const [visible, setVisible] = useState(true);
@@ -22,11 +21,11 @@ export function NeonPreloader() {
           aria-label="Welcome"
           role="status"
         >
-          <div className="preloader-mark">
-            <Sparkles size={22} strokeWidth={1.8} />
+          <div className="preloader-mark" aria-hidden="true">
+            <span className="preloader-initials">YB</span>
           </div>
-          <span className="preloader-welcome">Welcome</span>
-          <span className="preloader-caption">Yash Bhati</span>
+          <span className="preloader-caption">YASH BHATI</span>
+          <span className="preloader-status">INITIALIZING PORTFOLIO</span>
         </motion.div>
       )}
     </AnimatePresence>
