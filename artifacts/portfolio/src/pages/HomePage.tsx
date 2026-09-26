@@ -227,7 +227,9 @@ export default function HomePage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Plz Visit Our Website: Yash File Share | Fast &amp; Secure P2P Transfer
+              Please Visit Our Website
+              <br />
+              Yash File Share | Fast &amp; Secure P2P Transfer
             </a>
           </motion.div>
         </motion.div>
