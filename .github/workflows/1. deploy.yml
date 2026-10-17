@@ -36,6 +36,9 @@ jobs:
 
       - name: Build Portfolio
         working-directory: ./artifacts/portfolio
+        env:
+          PORT: "3000"
+          BASE_PATH: "/Yash/"
         run: npx vite build --base=/Yash/ --outDir=dist
 
       - name: Copy 404 page
