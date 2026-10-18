@@ -127,7 +127,7 @@ export default function HomePage() {
             {/* Photo */}
             <img
               src={profileImg}
-              alt="Yash Bhati"
+              alt="Yash Bhati - Friend of Ayush KV Phulera"
               style={{
                  position: 'absolute', inset: 4,
                  width: 'calc(100% - 8px)', height: 'calc(100% - 8px)',
@@ -150,7 +150,8 @@ export default function HomePage() {
               marginBottom: 20,
             }}
           >
-            <span className="gradient-text">Yash Bhati</span>
+                        <span className="gradient-text">Yash Bhati</span>
+            <span style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}>Friend of Ayush KV PM Shri KV Phulera</span>
           </motion.h1>
 
           {/* Typing line */}
