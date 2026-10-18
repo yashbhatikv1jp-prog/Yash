@@ -41,10 +41,18 @@ jobs:
           BASE_PATH: "/Yash/"
         run: npx vite build --base=/Yash/ --outDir=dist
 
-      - name: Copy Profile Photo and 404 page
+      - name: Generate Sitemap and Copy Assets
         run: |
           cp ./artifacts/portfolio/dist/index.html ./artifacts/portfolio/dist/404.html
           cp ./attached_assets/profile_1784022713130.jpg ./artifacts/portfolio/dist/profile.jpg
+          P="https://"
+          D="yashbhatikv1jp-prog.github.io/Yash"
+                    S="http:"//www."sitemaps.org/schemas/sitemap/0.9"
+          printf '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="%s">\n' "$S" > ./artifacts/portfolio/dist/sitemap.xml
+          for page in "/" "/about" "/skills" "/projects" "/achievements" "/contact"; do
+            printf '  <url><loc>%s%s%s</loc></url>\n' "$P" "$D" "$page" >> ./artifacts/portfolio/dist/sitemap.xml
+          done
+          printf '</urlset>\n' >> ./artifacts/portfolio/dist/sitemap.xml
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
