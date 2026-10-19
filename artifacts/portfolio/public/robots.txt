@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yashbhatikv1jp-prog.github.io/Yash/sitemap.xml
