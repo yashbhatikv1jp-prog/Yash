@@ -128,6 +128,8 @@ export default function HomePage() {
             <img
               src={profileImg}
               alt="Yash Bhati - Friend of Ayush KV Phulera"
+              width={1448}
+              height={1086}
               style={{
                  position: 'absolute', inset: 4,
                  width: 'calc(100% - 8px)', height: 'calc(100% - 8px)',
@@ -136,6 +138,7 @@ export default function HomePage() {
                 objectPosition: 'center 22%',
               }}
             />
+            <span className="sr-only">Friend of Ayush KV PM Shri KV Phulera</span>
           </motion.div>
 
           {/* Name */}

@@ -1,0 +1,32 @@
+Please fix and optimize the SEO, Sitemap, and GitHub Pages deployment for my portfolio website (`artifacts/portfolio`). Do NOT change the visual UI design of the website, just perform these 5 exact tasks and fix any existing syntax/build errors:
+
+1. CREATE A VALID `sitemap.xml` IN `artifacts/portfolio/public/sitemap.xml`:
+   - Use standard XML format with xmlns="http://sitemaps.org"
+   - Include these 6 exact full URLs (using https:// and domain yashbhatikv1jp-prog.github.io/Yash):
+     - / (priority 1.0)
+     - /about (priority 0.8)
+     - /skills (priority 0.8)
+     - /projects (priority 0.9)
+     - /achievements (priority 0.8)
+     - /contact (priority 0.7)
+
+2. CREATE/UPDATE `artifacts/portfolio/public/robots.txt`:
+   - Allow all crawlers (`User-agent: *`, `Allow: /`) and point `Sitemap:` to the full URL of `sitemap.xml` on `yashbhatikv1jp-prog.github.io/Yash/sitemap.xml`.
+
+3. COPY PROFILE PHOTO FOR OG:IMAGE:
+   - Copy my profile photo (`attached_assets/profile_1784022713130.jpg` or the profile image used in `HomePage.tsx`) into `artifacts/portfolio/public/profile.jpg` so it is publicly accessible at `/Yash/profile.jpg`.
+
+4. UPDATE `artifacts/portfolio/index.html` FOR GOOGLE SEARCH (5 FIXES):
+   - Keep my existing Google verification tag: `<meta name="google-site-verification" content="N6_jyNB5l8IM67TeCH_nPtzeR3kHYmYdtztt2J7Gtmo" />`
+   - Set `<title>` to: `Yash Bhati | Friend of Ayush KV | PM Shri KV Phulera`
+   - Set `<meta name="description">` to: `Class 10 student & developer at PM Shri KV Phulera, Narnaul Haryana. Yash Bhati (Friend of Ayush KV) - IIT Delhi Hackathon Participant.`
+   - Set Open Graph (`og:site_name` = "Yash Bhati", `og:title`, `og:description`, `og:url`) and `twitter:image` / `og:image` pointing to the full URL of `/Yash/profile.jpg`.
+   - Fix Favicon links to `./favicon.svg?v=5` so the YB logo shows properly on GitHub Pages.
+   - Add valid JSON-LD Schema (`application/ld+json`) inside `<head>` containing:
+     a) `WebSite` schema with name `"Yash Bhati"` and alternateName `["Yash Bhati Portfolio", "Friend of Ayush KV"]` (to replace "GitHub Pages documentation" in Google Search).
+     b) `Person` schema for `"Yash Bhati"`, alternateName `"Friend of Ayush KV"`, alumniOf `"PM SHRI Kendriya Vidyalaya Phulera"`, and image pointing to the full `/Yash/profile.jpg` URL.
+     c) `SiteNavigationElement` schema for About, Skills, Projects, Achievements, and Contact pages.
+
+5. UPDATE `HomePage.tsx` & `.github/workflows`:
+   - In `artifacts/portfolio/src/pages/HomePage.tsx`, ensure the profile `<img>` has `alt="Yash Bhati - Friend of Ayush KV Phulera"` and keep a screen-reader/SEO span with `"Friend of Ayush KV PM Shri KV Phulera"` without affecting the visual layout.
+   - Check `.github/workflows/` (like `deploy.yml` or `1. deploy.yml`). Ensure there is only ONE clean working GitHub Pages workflow file that builds `./artifacts/portfolio` with `--base=/Yash/ --outDir=dist`, copies `dist/index.html` to `dist/404.html`, and deploys cleanly without any bash syntax errors.
