@@ -41,11 +41,15 @@ jobs:
           BASE_PATH: "/Yash/"
         run: pnpm exec vite build --config vite.config.ts --base=/Yash/ --outDir=dist
 
-      - name: Prepare GitHub Pages output
+      - name: Prepare GitHub Pages output and Fix 404 for SEO
         run: |
           set -euo pipefail
           cp ./artifacts/portfolio/dist/index.html ./artifacts/portfolio/dist/404.html
-          test -s ./artifacts/portfolio/dist/profile.jpg
+          cp ./attached_assets/profile_1784022713130.jpg ./artifacts/portfolio/dist/profile.jpg || true
+          for page in about skills projects achievements contact; do
+            mkdir -p ./artifacts/portfolio/dist/$page
+            cp ./artifacts/portfolio/dist/index.html ./artifacts/portfolio/dist/$page/index.html
+          done
           test -s ./artifacts/portfolio/dist/sitemap.xml
           test -s ./artifacts/portfolio/dist/robots.txt
 
