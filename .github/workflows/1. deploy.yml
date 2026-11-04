@@ -38,8 +38,8 @@ jobs:
         working-directory: ./artifacts/portfolio
         env:
           PORT: "4173"
-          BASE_PATH: "/Yash/"
-        run: pnpm exec vite build --config vite.config.ts --base=/Yash/ --outDir=dist
+          BASE_PATH: "/"
+        run: pnpm exec vite build --config vite.config.ts --base=/ --outDir=dist
 
       - name: Prepare GitHub Pages output and Fix 404 for SEO
         run: |
