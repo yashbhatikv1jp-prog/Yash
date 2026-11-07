@@ -16,6 +16,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -53,10 +54,14 @@ jobs:
           test -s ./artifacts/portfolio/dist/sitemap.xml
           test -s ./artifacts/portfolio/dist/robots.txt
 
-      - name: Upload Artifacts
+      - name: Verify Pages build output
+        run: test -s ./artifacts/portfolio/dist/index.html
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './artifacts/portfolio/dist'
+          name: github-pages
+          path: ./artifacts/portfolio/dist
 
       - name: Deploy to GitHub Pages
         id: deployment
